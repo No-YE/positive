@@ -1,0 +1,151 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "병관이를 긍정적으로",
+        "version": "v2"
+    },
+    "paths": {
+        "/account/signup": {
+            "post": {
+                "operationId": "listVersionsv2",
+                "summary": "회원가입",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "201 response"
+                    },
+                    "403": {
+                        "description": "403 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "it is an existing id"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/account/login": {
+            "post": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "로그인",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "404": {
+                        "description": "404 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "it is not existing id or incorrect password"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/post/thank/{projnum}/{date}": {
+            "get": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "감사 내역 조회",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "404": {
+                        "description": "404 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "there is no thank post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/psot/thank": {
+            "post": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "감사 내역 작성",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "403": {
+                        "description": "403 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "cannot post the thank post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/post/praise/{projnum}/{date}": {
+            "get": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "칭찬 내역 조회",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "404": {
+                        "description": "404 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "there is no praise post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/post/praise": {
+            "post": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "칭찬 내역 작성",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "403": {
+                        "description": "403 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "cannot post praise post"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    },
+
+    "consumes": [
+        "application/json"
+    ]
+}
