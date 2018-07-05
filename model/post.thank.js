@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const postThankSchema = new Schema({
@@ -16,12 +15,6 @@ const postThankSchema = new Schema({
         type: Date,
         default: Date.now
     }
-});
-
-postThankSchema.plugin(autoIncrement.plugin, {
-    model: "thank",
-    field: "projnum",
-    startAt: 1
 });
 
 module.exports = mongoose.model("thank", postThankSchema);

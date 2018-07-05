@@ -18,13 +18,14 @@ const getThank = (req, res) => {
         }
         res.status(200).send(response).end();
 
-        res.status(200).end();
     }).catch((err) => {
+
         if(err) {
             console.error(err);
             res.status(500).end();
             return;
         }
+
     });
 
 };
@@ -50,9 +51,49 @@ const postThank = (req, res) => {
 
 const getPraise = (req, res) => {
 
+    Praise.find( {projectID: req.query.projectID} ).then((praises) => {
+
+        let response = new Array;
+
+        for (let i = 0; i < praises.length; i++) {
+            const responstObject = {
+                writer: praises[i].writer,
+                content: praises[i].content,
+                date: praises[i].date.toString().substring(0, 10),
+            }
+
+            response.push(responstObject);
+        }
+        res.status(200).send(response).end();
+
+    }).catch((err) => {
+
+        if(err) {
+            console.error(err);
+            res.status(500).end();
+            return;
+        }
+
+    });
+
 };
 
 const postPraise = (req, res) => {
+
+    let praise = new Praise();
+    praise.projectID = req.body.projectID;
+    praise.writer = req.decoded.id;
+    praise.content = req.body.content;
+
+    praise.save((err) => {
+        if(err) {
+            console.error(err);
+            res.status(500).end();
+            return;
+        }
+
+        res.status(200).end();
+    });
 
 };
 

@@ -1,16 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
-    .then(() => console.log("Connect to DB"))
-    .catch((err) => console.error(err));
-
-autoIncrement.initialize(mongoose.connection);
+mongoose.connect(process.env.MONGODB_URI)
 
 const PORT = process.env.PORT || 3000;
 
