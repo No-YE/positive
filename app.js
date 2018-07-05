@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 });
 
 //API
+app.use('/', (req, res) => res.send('Hello World!!'));
 app.use(require('./routes/docs'));
 app.use(require('./routes/account'));
 app.use(require('./routes/post'));
