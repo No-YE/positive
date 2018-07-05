@@ -28,5 +28,6 @@ app.use((req, res, next) => {
 app.use(require('./routes/docs'));
 app.use(require('./routes/account'));
 app.use(require('./routes/post'));
+app.use(require('./routes/project'));
 
 app.listen(PORT, () => console.log("server start at "+PORT));

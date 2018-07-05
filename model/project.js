@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
     projectID: {
-        type: String
+        type: String,
+        unique: true
     },
     user: {
         type: String
