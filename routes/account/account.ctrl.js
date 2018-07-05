@@ -58,9 +58,9 @@ const logIn = (req, res) => {
 
         } else {
 
-            const payload = { id: user.id };
+            const payload = { id: user.id, name: user.name };
             const JWT_SECRET = process.env.JWT_SECRET;
-            const option = { expiresIn: 60 * 60 * 24 };
+            const option = { expiresIn: "1d", algorithm: "HS256" };
 
             jwt.sign(payload, JWT_SECRET, option, (err, token) => {
                 if (err) {
@@ -68,6 +68,7 @@ const logIn = (req, res) => {
                     return;
                 }
 
+                console.log("token: ", token);
                 res.status(200).json({token: token}).end();
                 return;
             });
@@ -84,31 +85,6 @@ const logIn = (req, res) => {
 
     });
 };
-
-const isLoggedIn = (req, res, next) => {
-    const token = req.headers['x-access-token'];
-    
-    if(!token) {
-
-        return res.status(403).json({
-            message: "Should log in!"
-        });
-
-    } else {
-
-        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-            if(err) {
-                return res.status(404).json({
-                    message: err
-                });
-            } else {
-                req.decoded = decoded;
-                next();
-            }
-        });
-        
-    }
-}
 
 exports.signUp = signUp;
 exports.logIn = logIn;

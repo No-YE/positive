@@ -51,7 +51,7 @@
             }
         },
 
-        "/post/thank/{projnum}/{date}": {
+        "/post/thank/{projnum}": {
             "get": {
                 "operationId": "getVersionDetailsv2",
                 "summary": "감사 내역 조회",
@@ -74,7 +74,7 @@
             }
         },
 
-        "/psot/thank": {
+        "/post/thank": {
             "post": {
                 "operationId": "getVersionDetailsv2",
                 "summary": "감사 내역 작성",
@@ -97,7 +97,7 @@
             }
         },
 
-        "/post/praise/{projnum}/{date}": {
+        "/post/praise/{projnum}": {
             "get": {
                 "operationId": "getVersionDetailsv2",
                 "summary": "칭찬 내역 조회",
@@ -136,6 +136,59 @@
                         "examples": {
                             "application/json": {
                                 "message": "cannot post praise post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/registerProject": {
+            "post": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "프로젝트 등록",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "403": {
+                        "description": "403 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "cannot register project"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/takeProject": {
+            "get": {
+                "operationId": "getVersionDetailsv2",
+                "summary": "프로젝트 가져오기",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "examples": {
+                            "application/json" :{
+                                "resolution": "ex) 긍정적인 사람이 될거야!",
+                                "date": "ex) 2018070520180905",
+                                "projectID": "ex) 안병관1"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "403 response",
+                        "examples": {
+                            "application/json": {
+                                "message": "cannot register project"
                             }
                         }
                     }

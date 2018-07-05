@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
-const postThankSchema = new Schema({
+const ProjectSchema = new Schema({
     projectID: {
         type: String
     },
-    writer: {
+    user: {
         type: String
     },
-    content: {
-        type: [String]
+    resolution: {
+        type: String
+    },
+    term: {
+        type: Number
     },
     date: {
         type: Date,
@@ -18,10 +21,4 @@ const postThankSchema = new Schema({
     }
 });
 
-postThankSchema.plugin(autoIncrement.plugin, {
-    model: "thank",
-    field: "projnum",
-    startAt: 1
-});
-
-module.exports = mongoose.model("thank", postThankSchema);
+module.exports = mongoose.model("project", ProjectSchema);

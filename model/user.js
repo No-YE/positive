@@ -6,14 +6,16 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Name is required!"],
         match: [/^.{1,10}$/, "Should be 1~10 characters!"],
-        trim: true
+        trim: true,
+        select: true
     },
     id:  {
         type: String,
         required: [true, "ID is required!"],
         match: [/^.{6,15}$/, "Should be 6~15 characters!"],
         unique: true,
-        trim: true
+        trim: true,
+        select: true
     },
     pw: {
         type: String,

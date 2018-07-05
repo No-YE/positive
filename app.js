@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 require('dotenv').config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+    .then(() => console.log("Connect to DB"))
+    .catch((err) => console.error(err));
+
+autoIncrement.initialize(mongoose.connection);
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,5 +27,6 @@ app.use((req, res, next) => {
 //API
 app.use(require('./routes/docs'));
 app.use(require('./routes/account'));
+app.use(require('./routes/post'));
 
 app.listen(PORT, () => console.log("server start at "+PORT));
